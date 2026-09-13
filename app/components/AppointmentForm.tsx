@@ -86,7 +86,6 @@ export interface BookingSummaryData {
   email?: string;
   note?: string;
   referralSource?: string;
-  tags?: string;
   foundPatientId?: string | null;
 }
 
@@ -126,10 +125,7 @@ export function AppointmentForm({
   const [emergencyToContactNumber, setEmergencyToContactNumber] = React.useState("");
   const [note, setNote] = React.useState("");
   const [medicalHistory, setMedicalHistory] = React.useState<string>("");
-  const [insuranceCompany, setInsuranceCompany] = React.useState("");
-  const [insurancePolicyNo, setInsurancePolicyNo] = React.useState("");
   const [referralSource, setReferralSource] = React.useState("");
-  const [tags, setTags] = React.useState("");
   const [photoFileId, setPhotoFileId] = React.useState("");
   const [isUploading, setIsUploading] = React.useState(false);
   const [agreedToTerms, setAgreedToTerms] = React.useState(false);
@@ -155,7 +151,6 @@ export function AppointmentForm({
       email,
       note,
       referralSource,
-      tags,
       foundPatientId,
     });
   }, [
@@ -168,7 +163,6 @@ export function AppointmentForm({
     email,
     note,
     referralSource,
-    tags,
     foundPatientId,
     onSummaryChange,
   ]);
@@ -270,8 +264,6 @@ export function AppointmentForm({
     setEmergencyToContact("");
     setEmergencyToContactNumber("");
     setMedicalHistory("");
-    setInsuranceCompany("");
-    setInsurancePolicyNo("");
     setNote("");
     setPhotoFileId("");
   };
@@ -350,11 +342,8 @@ export function AppointmentForm({
         emergencyToContact,
         emergencyToContactNumber,
         medicalHistory: historyArray,
-        insuranceCompany,
-        insurancePolicyNo,
-        photoFileId,
+        photoFileId: photoFileId || "",
         referralSource,
-        tags: tags || "Website Booking",
         notes: note,
         date: selectedDate.toISOString(),
         dateKey: format(selectedDate, "yyyy-MM-dd"),
